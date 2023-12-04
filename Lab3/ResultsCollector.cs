@@ -1,8 +1,8 @@
 ﻿using OfficeOpenXml;
-using OfficeOpenXml.Core.ExcelPackage;
+using OfficeOpenXml.Drawing.Chart;
+using OfficeOpenXml.Drawing.Chart.Style;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;

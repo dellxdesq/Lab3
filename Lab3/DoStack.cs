@@ -16,7 +16,7 @@ public class DoStackOperation
             Console.WriteLine($"Номер прохода: {size}:");
             Generate.GenerateInputFile(size);
 
-            Stack<object> stack = new Stack<object>();
+            CustomStack<object> stack = new CustomStack<object>();
 
             try
             {
@@ -42,7 +42,7 @@ public class DoStackOperation
         MenuManager.ReturnToMainMenu("Stack");
     }
 
-    private static void ProcessOperation(int op, Stack<object> stack, ref int i, string[] operations)
+    private static void ProcessOperation(int op, CustomStack<object> stack, ref int i, string[] operations)
     {
         switch (op)
         {

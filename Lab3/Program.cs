@@ -1,28 +1,42 @@
-﻿namespace Lab3
+﻿
+using Lab3;
+using OfficeOpenXml;
+
+class Program
 {
-    public class Program
+    public static void Main()
     {
-        public static void Main()
+        ExcelPackage.LicenseContext = LicenseContext.Commercial;
+
+        MenuManager.ShowMainMenu();
+
+        while (true)
         {
-            Menu();
-            ConsoleKey choose = Console.ReadKey().Key;
-            switch (choose)
+            int choice = MenuManager.GetMenuChoice();
+
+            switch (choice)
             {
-                case ConsoleKey.D1:
+                case 1:
                     Console.Clear();
-                    DoLinkedList.Do();
+                    Tasks.RunStackTasks();
                     break;
-                case ConsoleKey.D2:
+                case 2:
                     Console.Clear();
-                    StackOperations.babum();
+                    Tasks.RunQueueTasks();
+                    break;
+                /*case 3:
+                    Console.Clear();
+                    Tasks.RunDynamicStructuresTasks();
+                    break;*/
+                case 4:
+                    Console.Clear();
+                    Tasks.RunListTasks();
+                    break;
+                default:
+                    Console.WriteLine("Error: Введите номер от 1 до 4!");
                     break;
             }
         }
-        public static void Menu()
-        {
-            Console.WriteLine("Выберите функцию калькулятора, указав цифру");
-            Console.WriteLine("работа со списком");
 
-        }
     }
 }
