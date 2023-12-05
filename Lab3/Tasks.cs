@@ -94,7 +94,7 @@ namespace Lab3
             }
         }
 
-        /*public static void RunDynamicStructuresTasks()
+        public static void RunDynamicStructuresTasks()
         {
             Console.Clear();
 
@@ -112,25 +112,22 @@ namespace Lab3
                 {
                     case 1:
                         Console.Clear();
-                        ExampleList.ExecuteList();
+                        ListThirdTask.WordFrequency();
                         MenuManager.ReturnToMainMenu("DinamicStructure");
-
                         break;
                     case 2:
-
                         Console.Clear();
-                        ExampleStack.ExcuiteStack();
+                        StackThirdTask.PalindromeCheck();
                         MenuManager.ReturnToMainMenu("DinamicStructure");
-
                         break;
                     case 3:
                         Console.Clear();
-                        TaskManagementSystem.QueueSource();
+                        QueueThirdTask.BankServiceSimulation();
                         MenuManager.ReturnToMainMenu("DinamicStructure");
                         break;
                     case 4:
                         Console.Clear();
-                        BinarySearchTree.ExampleTree();
+                        TreeThirdTask.DepthTree();
                         MenuManager.ReturnToMainMenu("DinamicStructure");
                         break;
                     default:
@@ -138,7 +135,7 @@ namespace Lab3
                         continue;
                 }
             }
-        }*/
+        }
 
         public static void RunListTasks()
         {

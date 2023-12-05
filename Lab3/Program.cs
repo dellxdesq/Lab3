@@ -24,10 +24,10 @@ class Program
                     Console.Clear();
                     Tasks.RunQueueTasks();
                     break;
-                /*case 3:
+                case 3:
                     Console.Clear();
                     Tasks.RunDynamicStructuresTasks();
-                    break;*/
+                    break;
                 case 4:
                     Console.Clear();
                     Tasks.RunListTasks();

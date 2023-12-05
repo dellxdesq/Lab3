@@ -35,13 +35,13 @@ namespace Lab3
                             case "Queue":
                                 Tasks.RunQueueTasks();
                                 break;
-                            /*case "DinamicStructure":
+                            case "DinamicStructure":
                                 Tasks.RunDynamicStructuresTasks();
-                                break;*/
+                                break;
                             case "List":
                                 Tasks.RunListTasks();
                                 break;
-                            // Добавьте другие ваши кейсы по мере необходимости
+                            
                             default:
                                 Program.Main();
                                 break;
