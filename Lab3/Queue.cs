@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
+﻿namespace Lab3;
 public class CustomQueue<T>
 {
     private LinkedList<T> list;
@@ -17,7 +15,7 @@ public class CustomQueue<T>
     {
         if (IsEmpty())
         {
-            throw new InvalidOperationException("Queue is empty");
+            throw new InvalidOperationException("Очередь пуста");
         }
 
         T value = list.First.Value;
@@ -40,7 +38,7 @@ public class CustomQueue<T>
     {
         if (IsEmpty())
         {
-            throw new InvalidOperationException("Queue is empty");
+            throw new InvalidOperationException("Очередь пуста");
         }
 
         return list.First.Value;

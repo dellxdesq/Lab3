@@ -8,17 +8,17 @@ class Program
     {
         ExcelPackage.LicenseContext = LicenseContext.Commercial;
 
-        MenuManager.ShowMainMenu();
+        TasksChoice.ShowMainMenu();
 
         while (true)
         {
-            int choice = MenuManager.GetMenuChoice();
+            int choice = TasksChoice.GetMenuChoice();
 
             switch (choice)
             {
                 case 1:
                     Console.Clear();
-                    Tasks.RunStackTasks();
+                    Tasks.DoStackTasks();
                     break;
                 case 2:
                     Console.Clear();

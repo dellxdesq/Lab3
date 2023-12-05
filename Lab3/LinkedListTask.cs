@@ -1,7 +1,4 @@
-﻿using Lab3;
-using System;
-using System.Collections.Generic;
-
+﻿namespace Lab3;
 public class CustomLinkedList<T>
 {
     private class Node
@@ -30,7 +27,7 @@ public class CustomLinkedList<T>
         head = newNode;
     }
 
-    public void Reverse()   // Задание 4.1
+    public void Reverse() 
     {
         Node prev = null;
         Node current = head;
@@ -46,7 +43,7 @@ public class CustomLinkedList<T>
 
         head = prev;
     }
-    public void MoveFirstAndLast()  // Задание 4.2
+    public void MoveFirstAndLast()  
     {
         if (head == null || head.Next == null)
         {
@@ -70,7 +67,7 @@ public class CustomLinkedList<T>
     }
 
 
-    public int CountDistinctElements() // Задание 4.3
+    public int CountDistinctElements() 
     {
         HashSet<T> uniqueElements = new HashSet<T>();
         Node current = head;
@@ -83,7 +80,7 @@ public class CustomLinkedList<T>
 
         return uniqueElements.Count;
     }
-    public void RemoveNonUniqueElements() // Задание 4.4
+    public void RemoveNonUniqueElements() 
     {
         if (head == null)
         {
@@ -110,7 +107,7 @@ public class CustomLinkedList<T>
             current = current.Next;
         }
     }
-    public void PasteYourself(T elementInsert) // Задание 4.5
+    public void PasteYourself(T elementInsert) 
     {
         if (head == null)
         {
@@ -169,7 +166,7 @@ public class CustomLinkedList<T>
         return copy;
     }
 
-    public void InsertOrdered(T element) // Задание 4.6
+    public void InsertOrdered(T element) 
     {
         Node newNode = new Node(element);
 
@@ -190,7 +187,7 @@ public class CustomLinkedList<T>
         newNode.Next = current.Next;
         current.Next = newNode;
     }
-    public void RemoveAllOccurrences(T element) // Задание 4.7
+    public void RemoveAllOccurrences(T element) 
     {
         if (head == null)
         {
@@ -222,7 +219,7 @@ public class CustomLinkedList<T>
         }
     }
 
-    public void InsertBeforeFirstOccurrence(T existingElement, T newElement) // Задание 4.8
+    public void InsertBeforeFirstOccurrence(T existingElement, T newElement) 
     {
         if (head == null)
         {
@@ -251,7 +248,7 @@ public class CustomLinkedList<T>
         Console.WriteLine($"Элемент {existingElement} не найден в списке. Ничего не вставлено.");
     }
 
-    public void AppendList(CustomLinkedList<T> listToAppend) // Задание 4.9
+    public void AppendList(CustomLinkedList<T> listToAppend) 
     {
         if (listToAppend.head == null)
         {
@@ -295,7 +292,7 @@ public class CustomLinkedList<T>
         }
     }
 
-    public void SplitList(T number, out CustomLinkedList<T> secondList) // Задание 4.10
+    public void SplitList(T number, out CustomLinkedList<T> secondList) 
     {
         secondList = new CustomLinkedList<T>();
 
@@ -329,7 +326,7 @@ public class CustomLinkedList<T>
 
         secondList.head = current;
     }
-    public void DuplicateList() // Задание 4.11
+    public void DuplicateList() 
     {
         if (head == null)
         {
@@ -347,23 +344,20 @@ public class CustomLinkedList<T>
 
         current.Next = copy.head;
     }
-    public void SwapElements(T element1, T element2) // Задание 4.12
+    public void SwapElements(T element1, T element2) 
     {
-        // Проверка наличия обоих элементов в списке
         if (!Contains(element1) || !Contains(element2))
         {
             Console.WriteLine("Один из элементов отсутствует в списке. Невозможно выполнить обмен.");
             return;
         }
 
-        // Если элементы равны, обмена не требуется
         if (EqualityComparer<T>.Default.Equals(element1, element2))
         {
             Console.WriteLine("Оба элемента одинаковы. Обмен не требуется.");
             return;
         }
 
-        // Ищем узлы, содержащие элементы
         Node prev1 = null, current1 = head;
         Node prev2 = null, current2 = head;
 
@@ -378,8 +372,7 @@ public class CustomLinkedList<T>
             prev2 = current2;
             current2 = current2.Next;
         }
-
-        // Если один из элементов находится в начале списка
+       
         if (prev1 == null)
         {
             head = current2;
@@ -397,8 +390,7 @@ public class CustomLinkedList<T>
         {
             prev2.Next = current1;
         }
-
-        // Обмениваем ссылки Next
+     
         Node temp = current1.Next;
         current1.Next = current2.Next;
         current2.Next = temp;

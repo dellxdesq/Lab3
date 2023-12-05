@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lab3
 {
-    class Generate
+    public class Generator
     {
         public static void GenerateInputFile(int size)
         {
@@ -35,7 +35,7 @@ namespace Lab3
             }
             else
             {
-                string[] words = { "cat", "dog", "bird", "apple", "orange" };
+                string[] words = { "cat" };
                 return words[random.Next(words.Length)];
             }
         }
@@ -77,7 +77,7 @@ namespace Lab3
                 }
             }
         }
-        public static void GenerateInputQueueDifferentFile()
+        public static void GenerateInputQueueSametFile()
         {
             Random random = new Random();
 

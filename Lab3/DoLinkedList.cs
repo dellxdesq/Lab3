@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 namespace Lab3
 {
-    public class ExecutorList
+    public class DoLinkedList
     {
-        public static void ReverseLinkedList() // Задание 4.1
+        public static void ReverseLinkedList()
         {
             Console.WriteLine("Задание 4.1 - Функция, которая переворачивает список L.");
             try
             {
-                CustomLinkedList<int> myList = Generate.GenerateRandomLinkedList(10);
+                CustomLinkedList<int> myList = Generator.GenerateRandomLinkedList(10);
 
                 Console.WriteLine("Исходный список:");
                 myList.Print();
@@ -30,15 +30,15 @@ namespace Lab3
             }
             finally
             {
-                MenuManager.ReturnToMainMenu("List");
+                TasksChoice.ReturnToMainMenu("List");
             }
         }
-        public static void MoveLastToFrontToLast() // Задание 4.2
+        public static void MoveLastToFrontToLast() 
         {
             Console.WriteLine("Задание 4.2 - Функция, меняет местами первый и последний элемент.");
             try
             {
-                CustomLinkedList<int> myList = Generate.GenerateRandomLinkedList(5);
+                CustomLinkedList<int> myList = Generator.GenerateRandomLinkedList(5);
 
                 Console.WriteLine("Исходный список:");
                 myList.Print();
@@ -54,15 +54,15 @@ namespace Lab3
             }
             finally
             {
-                MenuManager.ReturnToMainMenu("List");
+                TasksChoice.ReturnToMainMenu("List");
             }
         }
-        public static void DistinctElementsCount() //Задание 4.3
+        public static void DistinctElementsCount()
         {
             Console.WriteLine("Задание 4.3 - Функция, которая определяет количество различных элементов списка.");
             try
             {
-                CustomLinkedList<int> myList = Generate.GenerateRandomLinkedList(10);
+                CustomLinkedList<int> myList = Generator.GenerateRandomLinkedList(10);
 
                 Console.WriteLine("Исходный список:");
                 myList.Print();
@@ -77,17 +77,17 @@ namespace Lab3
             }
             finally
             {
-                MenuManager.ReturnToMainMenu("List");
+                TasksChoice.ReturnToMainMenu("List");
             }
         }
 
-        public static void RemoveNonUniqueElements() // Задание 4.4
+        public static void RemoveNonUniqueElements()
         {
             Console.WriteLine("Задание 4.3 - Функция, которая удаляет из списка неуникальные элементы.");
 
             try
             {
-                CustomLinkedList<int> myList = Generate.GenerateRandomLinkedList(40);
+                CustomLinkedList<int> myList = Generator.GenerateRandomLinkedList(40);
 
                 Console.WriteLine("Исходный список:");
                 myList.Print();
@@ -103,15 +103,15 @@ namespace Lab3
             }
             finally
             {
-                MenuManager.ReturnToMainMenu("List");
+                TasksChoice.ReturnToMainMenu("List");
             }
         }
-        public static void InsertYourself() // Задание 4.5
+        public static void InsertYourself()
         {
             Console.WriteLine("Задание 4.5 - Вставка списка самого в себя вслед за первым вхождением числа x.");
             try
             {
-                CustomLinkedList<int> myList = Generate.GenerateRandomLinkedList(10);
+                CustomLinkedList<int> myList = Generator.GenerateRandomLinkedList(10);
 
                 Console.WriteLine("Исходный список:");
                 myList.Print();
@@ -130,15 +130,15 @@ namespace Lab3
             }
             finally
             {
-                MenuManager.ReturnToMainMenu("List");
+                TasksChoice.ReturnToMainMenu("List");
             }
         }
-        public static void InsertOrdered() // Задание 4.6
+        public static void InsertOrdered()
         {
             Console.WriteLine("Задание 4.6 - Вставка в упорядоченный список с сохранением порядка.");
             try
             {
-                CustomLinkedList<int> myList = Generate.GenerateRandomSortedLinkedList(10);
+                CustomLinkedList<int> myList = Generator.GenerateRandomSortedLinkedList(10);
 
                 Console.WriteLine("Исходный упорядоченный список:");
                 myList.Print();
@@ -157,16 +157,16 @@ namespace Lab3
             }
             finally
             {
-                MenuManager.ReturnToMainMenu("List");
+                TasksChoice.ReturnToMainMenu("List");
             }
         }
-        public static void RemoveAllOccurrences() // Задание 4.7
+        public static void RemoveAllOccurrences()
         {
             Console.WriteLine("Задание 4.7 - Удаление всех элементов равных заданному.");
 
             try
             {
-                CustomLinkedList<int> myList = Generate.GenerateRandomLowValuesLinkedList(50);
+                CustomLinkedList<int> myList = Generator.GenerateRandomLowValuesLinkedList(50);
 
                 Console.WriteLine("Исходный список:");
                 myList.Print();
@@ -185,16 +185,16 @@ namespace Lab3
             }
             finally
             {
-                MenuManager.ReturnToMainMenu("List");
+                TasksChoice.ReturnToMainMenu("List");
             }
         }
-        public static void InsertBeforeFirstOccurrence() // Задание 4.8
+        public static void InsertBeforeFirstOccurrence()
         {
             Console.WriteLine("Задание 4.8 - Вставка элемента перед первым вхождением другого элемента.");
 
             try
             {
-                CustomLinkedList<int> myList = Generate.GenerateRandomLinkedList(30);
+                CustomLinkedList<int> myList = Generator.GenerateRandomLinkedList(30);
 
                 Console.WriteLine("Исходный список:");
                 myList.Print();
@@ -216,17 +216,17 @@ namespace Lab3
             }
             finally
             {
-                MenuManager.ReturnToMainMenu("List");
+                TasksChoice.ReturnToMainMenu("List");
             }
         }
-        public static void AppendList() // Задание 4.9
+        public static void AppendList()
         {
             Console.WriteLine("Задание 4.9 - Дописывание списка к текущему.");
 
             try
             {
-                CustomLinkedList<int> myList = Generate.GenerateRandomLinkedList(10);
-                CustomLinkedList<int> listToAppend = Generate.GenerateRandomLinkedList(10);
+                CustomLinkedList<int> myList = Generator.GenerateRandomLinkedList(10);
+                CustomLinkedList<int> listToAppend = Generator.GenerateRandomLinkedList(10);
 
                 Console.WriteLine("Исходный список:");
                 myList.Print();
@@ -245,15 +245,15 @@ namespace Lab3
             }
             finally
             {
-                MenuManager.ReturnToMainMenu("List");
+                TasksChoice.ReturnToMainMenu("List");
             }
         }
-        public static void SplitListExample() // Задание 4.10
+        public static void SplitListExample()
         {
             Console.WriteLine("Задание 4.10 - Разбиение списка на два по первому вхождению числа.");
             try
             {
-                CustomLinkedList<int> myList = Generate.GenerateRandomLinkedList(40);
+                CustomLinkedList<int> myList = Generator.GenerateRandomLinkedList(40);
 
                 Console.WriteLine("Исходный список:");
                 myList.Print();
@@ -276,15 +276,15 @@ namespace Lab3
             }
             finally
             {
-                MenuManager.ReturnToMainMenu("List");
+                TasksChoice.ReturnToMainMenu("List");
             }
         }
-        public static void DuplicateListExample() // Задание 4.11
+        public static void DuplicateListExample()
         {
             Console.WriteLine("Задание 4.11 - Удвоение списка.");
             try
             {
-                CustomLinkedList<int> myList = Generate.GenerateRandomLinkedList(10);
+                CustomLinkedList<int> myList = Generator.GenerateRandomLinkedList(10);
 
                 Console.WriteLine("Исходный список:");
                 myList.Print();
@@ -300,15 +300,15 @@ namespace Lab3
             }
             finally
             {
-                MenuManager.ReturnToMainMenu("List");
+                TasksChoice.ReturnToMainMenu("List");
             }
         }
-        public static void SwapElementsExample() // Задание 4.12
+        public static void SwapElementsExample()
         {
             Console.WriteLine("Задание 4.12 - Обмен местами двух элементов.");
             try
             {
-                CustomLinkedList<int> myList = Generate.GenerateRandomLinkedList(30);
+                CustomLinkedList<int> myList = Generator.GenerateRandomLinkedList(30);
 
                 Console.WriteLine("Исходный список:");
                 myList.Print();
@@ -330,7 +330,7 @@ namespace Lab3
             }
             finally
             {
-                MenuManager.ReturnToMainMenu("List");
+                TasksChoice.ReturnToMainMenu("List");
             }
         }
     }

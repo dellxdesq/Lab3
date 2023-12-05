@@ -1,20 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace Lab3;
 
-namespace Lab3;
-
-public class DoStackOperation
+public class StackOperations
 {
-    public static void StackOperations()
+    public static void DoStackOperations()
     {
         for (int size = 1; size <= 100; size++)
         {
             Console.WriteLine($"Номер прохода: {size}:");
-            Generate.GenerateInputFile(size);
+            Generator.GenerateInputFile(size);
 
             CustomStack<object> stack = new CustomStack<object>();
 
@@ -39,7 +32,7 @@ public class DoStackOperation
 
             Console.WriteLine();
         }
-        MenuManager.ReturnToMainMenu("Stack");
+        TasksChoice.ReturnToMainMenu("Stack");
     }
 
     private static void ProcessOperation(int op, CustomStack<object> stack, ref int i, string[] operations)
@@ -78,7 +71,7 @@ public class DoStackOperation
                 break;
         }
     }
-    public static void ExecuteStackOperationsFromFile()  // Задание 1.3
+    public static void DoStackOperationsFromFile()
     {
         string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
         string outputFilePath = Path.Combine(desktopPath, "CustomStack - График выполнения операци.xlsx");
@@ -90,10 +83,10 @@ public class DoStackOperation
         {
             Console.WriteLine($"Размер стека: {size}");
 
-            Generate.GenerateInputStackFile(size);
+            Generator.GenerateInputStackFile(size);
 
             CustomStack<object> stack = new CustomStack<object>();
-            OperationTimer timer = new OperationTimer();
+            TimeMeter timer = new TimeMeter();
 
             try
             {
@@ -113,7 +106,7 @@ public class DoStackOperation
         }
 
         ExcelWriter.WriteToExcel(results, outputFilePath, chartName);
-        MenuManager.ReturnToMainMenu("Stack");
+        TasksChoice.ReturnToMainMenu("Stack");
     }
 
     private static void ProcessStackOperations(int size, CustomStack<object> stack, List<Tuple<int, double>> results)
@@ -139,7 +132,6 @@ public class DoStackOperation
                     stack.Push(element);
                 }
                 break;
-
             case 2:
                 stack.Pop();
                 break;
@@ -147,22 +139,19 @@ public class DoStackOperation
             case 3:
                 stack.Top();
                 break;
-
             case 4:
                 stack.IsEmpty();
                 break;
-
             case 5:
                 stack.Print(false);
                 break;
-
             default:
                 Console.WriteLine("Неверная операция");
                 break;
         }
     }
 
-    public static void ExecutePostfixCalculation() // Задание 1.4
+    public static void DoPostfixOperation()
     {
         Console.WriteLine("Задание 1.4 - Вычисление в постфиксной записи");
         Console.WriteLine("Введите выражение для вычисления:");
@@ -177,14 +166,14 @@ public class DoStackOperation
 
         try
         {
-            double result = PostfixCalculator.PostfixCalculate(expression);
+            double result = Calculator.PostfixCalculate(expression);
             Console.WriteLine($"Выражение: {expression} = {result}");
         }
         catch (Exception ex)
         {
             Console.WriteLine($"Ошибка при вычислении выражения: {ex.Message}");
         }
-        MenuManager.ReturnToMainMenu("Stack");
+        TasksChoice.ReturnToMainMenu("Stack");
     }
 
     private static bool IsPostfixExpressionValid(string expression)
@@ -228,7 +217,7 @@ public class DoStackOperation
         return "+-*/^".Contains(ch);
     }
 
-    public static void ExecuteInfixToPostfixTask() // Задание 1.5
+    public static void DoInfixToPostfixOperation()
     {
         Console.WriteLine("Задание 1.5 - Перевод из инфиксной в постфиксную запись");
         Console.WriteLine("Введите инфиксное выражение:");
@@ -241,17 +230,17 @@ public class DoStackOperation
             Console.WriteLine("");
             Console.WriteLine($"Постфиксное: {postfixExpression}");
 
-            double result = PostfixCalculator.PostfixCalculate(postfixExpression);
+            double result = Calculator.PostfixCalculate(postfixExpression);
             Console.WriteLine($"Результат: {result}");
         }
         catch (Exception ex)
         {
             Console.WriteLine($"Ошибка: {ex.Message}");
         }
-        MenuManager.ReturnToMainMenu("Stack");
+        TasksChoice.ReturnToMainMenu("Stack");
     }
 
-    public static void ExecuteStackOperationsWithBuiltInStack() // Задание 1.6
+    public static void DoStandartStackOperation()
     {
         string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
         string outputFilePath = Path.Combine(desktopPath, "Stack - График выполнения операци.xlsx");
@@ -263,9 +252,9 @@ public class DoStackOperation
         {
             Console.WriteLine($"Размер стека: {size}");
 
-            Generate.GenerateInputStackFile(size);
+            Generator.GenerateInputStackFile(size);
             Stack<object> stack = new Stack<object>();
-            OperationTimer timer = new OperationTimer();
+            TimeMeter timer = new TimeMeter();
             timer.Start();
 
             try
@@ -285,7 +274,7 @@ public class DoStackOperation
         }
 
         ExcelWriter.WriteToExcel(results, outputFilePath, chartName);
-        MenuManager.ReturnToMainMenu("Stack");
+        TasksChoice.ReturnToMainMenu("Stack");
     }
 
     private static void ProcessStackOperations(int size, Stack<object> stack, List<Tuple<int, double>> results)
@@ -304,7 +293,6 @@ public class DoStackOperation
         switch (op)
         {
             case 1:
-                // Push
                 if (currentIndex + 1 < operations.Length)
                 {
                     currentIndex++;
@@ -313,28 +301,24 @@ public class DoStackOperation
                 }
                 break;
             case 2:
-                // Pop
                 if (stack.Count > 0)
                 {
                     stack.Pop();
                 }
                 break;
             case 3:
-                // Top
                 if (stack.Count > 0)
                 {
                     stack.Peek();
                 }
                 break;
             case 4:
-                // Встроенный Stack не предоставляет метода isEmpty, поэтому используем проверку
                 if (stack.Count == 0)
                 {
                     bool isEmpty = true;
                 }
                 break;
             case 5:
-                // Встроенный Stack не предоставляет метода Print, поэтому используем цикл
                 foreach (var item in stack)
                 {
                 }

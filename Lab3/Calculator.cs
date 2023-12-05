@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Lab3
 {
-    public static class PostfixCalculator
+    public static class Calculator
     {
         public static double PostfixCalculate(string expression)
         {

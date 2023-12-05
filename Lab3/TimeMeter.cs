@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace Lab3
 {
-    public class OperationTimer
+    public class TimeMeter
     {
         private Stopwatch stopwatch;
 
-        public OperationTimer()
+        public TimeMeter()
         {
             stopwatch = new Stopwatch();
         }

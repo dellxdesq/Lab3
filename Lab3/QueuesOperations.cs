@@ -1,14 +1,14 @@
 ﻿namespace Lab3
 {
-    public class ExecutorQueue
+    public class QueuesOperations
     {
-        public static void ExecuteQueueOperations()
+        public static void DoQueuesOperations()
         {
             for (int size = 1; size <= 100; size++)
             {
                 Console.WriteLine($"Номер прохода: {size}:");
 
-                Generate.GenerateInputFile(size);
+                Generator.GenerateInputFile(size);
 
                 CustomQueue<string> queue = new CustomQueue<string>();
 
@@ -34,7 +34,7 @@
                 Console.WriteLine();
             }
             Console.WriteLine();
-            MenuManager.ReturnToMainMenu("Queue");
+            TasksChoice.ReturnToMainMenu("Queue");
         }
 
         private static void ProcessQueueOperation(int op, int i, string[] operations, CustomQueue<string> queue)
@@ -93,23 +93,23 @@
             }
         }
 
-        public static void ExecuteQueueOperationsWithSameLenghtFile() // Задание 2.3
+        public static void DoQueueOperationsWithSameLenghtFile() // Задание 2.3
         {
             // Одинаковый по длине, случайный по операциям
             string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            string outputFilePath = Path.Combine(desktopPath, "CustomQueue_SameLenght - График выполнения операци.xlsx");
-            string chartName = "CustomQueue_SameLenght - График выполнения операций";
+            string outputFilePath = Path.Combine(desktopPath, "CustomQueue_SameLength - График выполнения операци.xlsx");
+            string chartName = "CustomQueue_SameLength - График выполнения операций";
             int isSameLenght = 1;
 
             List<Tuple<int, double>> results = new List<Tuple<int, double>>();
-            ExecuteQueueOperations(results, "inputQueueSameLenght.txt", isSameLenght);
+            ExecuteQueueOperations(results, "inputQueueDifferent.txt", isSameLenght);
 
             ExcelWriter.WriteToExcel(results, outputFilePath, chartName);
 
             Console.WriteLine();
-            MenuManager.ReturnToMainMenu("Queue");
+            TasksChoice.ReturnToMainMenu("Queue");
         }
-        public static void ExecuteQueueOperationsWithFile() // Задание 2.3
+        public static void DoDifferentQueueOperationWithFile() // Задание 2.3
         {
             // Прогрессирующий по длине, случайный по операциям
             string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
@@ -123,7 +123,7 @@
             ExcelWriter.WriteToExcel(resultsDifferent, outputFilePath, chartName);
 
             Console.WriteLine();
-            MenuManager.ReturnToMainMenu("Queue");
+            TasksChoice.ReturnToMainMenu("Queue");
         }
 
         private static void ExecuteQueueOperations(List<Tuple<int, double>> results, string fileName, int chooseFile)
@@ -138,15 +138,15 @@
                 {
                     if (chooseFile == 1)
                     {
-                        Generate.GenerateInputQueueDifferentFile();
+                        Generator.GenerateInputQueueSametFile();
                     }
                     else if (chooseFile == 2)
                     {
-                        Generate.GenerateInputQueueFile(size);
+                        Generator.GenerateInputQueueFile(size);
                     }
 
                     CustomQueue<string> queue = new CustomQueue<string>();
-                    OperationTimer timer = new OperationTimer();
+                    TimeMeter timer = new TimeMeter();
                     timer.Start();
 
                     ProcessQueueOperations(queue, fileName, isExcel);
@@ -214,7 +214,7 @@
                 }
             }
         }
-        public static void ExecuteQueueOperationsWithQueue() // Задание 2.4
+        public static void DoStandartQueueOperation() // Задание 2.4
         {
             string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             string outputFilePath = Path.Combine(desktopPath, "Queue - График выполнения операций.xlsx");
@@ -228,10 +228,10 @@
 
                 try
                 {
-                    Generate.GenerateInputQueueFile(size);
+                    Generator.GenerateInputQueueFile(size);
 
                     Queue<object> queue = new Queue<object>();
-                    OperationTimer timer = new OperationTimer();
+                    TimeMeter timer = new TimeMeter();
                     timer.Start();
 
                     ProcessQueueOperationsWithQueue(queue);
@@ -250,7 +250,7 @@
             }
 
             ExcelWriter.WriteToExcel(results, outputFilePath, chartName);
-            MenuManager.ReturnToMainMenu("Queue");
+            TasksChoice.ReturnToMainMenu("Queue");
         }
 
         private static void ProcessQueueOperationsWithQueue(Queue<object> queue)

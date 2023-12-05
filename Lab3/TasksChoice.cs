@@ -1,19 +1,15 @@
-﻿using Lab3;
-using System;
-using System.Threading.Tasks;
-
-namespace Lab3
+﻿namespace Lab3
 {
-    public static class MenuManager
+    public static class TasksChoice
     {
         public static void ShowMainMenu()
         {
             Console.Clear();
-            Console.WriteLine("Выберите структуру данных:");
-            Console.WriteLine("1. Стек");
-            Console.WriteLine("2. Очередь");
-            Console.WriteLine("3. Динамические структуры");
-            Console.WriteLine("4. Лист");
+            Console.WriteLine("Выберите структуру данных (для выбора, нажмите цифру и enter)");
+            Console.WriteLine("(1) Стек");
+            Console.WriteLine("(2) Очередь");
+            Console.WriteLine("(3) Динамические структуры");
+            Console.WriteLine("(4) Лист");
         }
 
         public static void ReturnToMainMenu(string previousMethod)
@@ -30,18 +26,17 @@ namespace Lab3
                         switch (previousMethod)
                         {
                             case "Stack":
-                                Tasks.RunStackTasks();
+                                Tasks.DoStackTasks();
                                 break;
                             case "Queue":
                                 Tasks.RunQueueTasks();
                                 break;
-                            case "DinamicStructure":
+                            case "DynamicStructures":
                                 Tasks.RunDynamicStructuresTasks();
                                 break;
                             case "List":
                                 Tasks.RunListTasks();
-                                break;
-                            
+                                break;  
                             default:
                                 Program.Main();
                                 break;
