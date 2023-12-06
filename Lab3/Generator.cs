@@ -127,7 +127,7 @@ namespace Lab3
 
             for (int i = 0; i < size; i++)
             {
-                myList.AddToFront(random.Next(1, 11));
+                myList.AddToFront(random.Next(1, 15));
             }
 
             return myList;
@@ -139,7 +139,7 @@ namespace Lab3
 
             for (int i = 0; i < size; i++)
             {
-                myList.Add(random.Next(1, 11));
+                myList.Add(random.Next(1, 15));
             }
 
             return myList;

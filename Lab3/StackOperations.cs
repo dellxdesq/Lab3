@@ -4,12 +4,12 @@ public class StackOperations
 {
     public static void DoStackOperations()
     {
-        for (int size = 1; size <= 100; size++)
+        for (int iteration = 1; iteration <= 100; iteration++)
         {
-            Console.WriteLine($"Номер прохода: {size}:");
-            Generator.GenerateInputFile(size);
+            Console.WriteLine($"Номер прохода: {iteration}:");
+            Generator.GenerateInputFile(iteration);
 
-            CustomStack<object> stack = new CustomStack<object>();
+            ModifiedStack<object> stack = new ModifiedStack<object>();
 
             try
             {
@@ -17,13 +17,13 @@ public class StackOperations
 
                 for (int i = 0; i < operations.Length - 1; i++)
                 {
-                    int op = int.Parse(operations[i]);
-                    ProcessOperation(op, stack, ref i, operations);
+                    int operationCode = int.Parse(operations[i]);
+                    ProcessOperation(operationCode, stack, ref i, operations);
                 }
             }
             catch (FileNotFoundException)
             {
-                Console.WriteLine("Файл input.txt не найден.");
+                Console.WriteLine("Ошибка! Файл input.txt не найден.");
             }
             catch (Exception ex)
             {
@@ -35,57 +35,49 @@ public class StackOperations
         TasksChoice.ReturnToMainMenu("Stack");
     }
 
-    private static void ProcessOperation(int op, CustomStack<object> stack, ref int i, string[] operations)
+    private static void ProcessOperation<T>(int operationCode, ModifiedStack<T> stack, ref int currentIndex, string[] operations)
     {
-        switch (op)
+        switch (operationCode)
         {
             case 1:
-                if (i + 1 < operations.Length)
-                {
-                    object element = operations[i + 1];
-                    stack.Push(element);
-                    Console.WriteLine($"Push: {element}");
-                    i++;
-                }
-                else Console.WriteLine("Push: Недостаточно аргументов для операции.");
+                T value = (T)Convert.ChangeType(operations[currentIndex + 1], typeof(T));
+                stack.Push(value);
+                currentIndex++; 
                 break;
             case 2:
-                if (!stack.IsEmpty())
-                {
-                    object poppedItem = stack.Pop();
-                    Console.WriteLine($"Pop: {poppedItem}");
-                }
-                else Console.WriteLine("Pop: Стек пуст. Невозможно выполнить операцию Pop.");
+                stack.Pop();
                 break;
             case 3:
-                Console.WriteLine($"Top: {stack.Top()}");
+                var topElement = stack.Top();
+                Console.WriteLine($"Top element: {topElement}");
                 break;
             case 4:
-                Console.WriteLine($"isEmpty: {stack.IsEmpty()}");
+                bool isEmpty = stack.IsEmpty();
+                Console.WriteLine($"Is Empty: {isEmpty}");
                 break;
             case 5:
                 stack.Print();
                 break;
             default:
-                Console.WriteLine("Неверная операция");
+                Console.WriteLine($"Неизвестная операция: {operationCode}");
                 break;
         }
     }
     public static void DoStackOperationsFromFile()
     {
         string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-        string outputFilePath = Path.Combine(desktopPath, "CustomStack - График выполнения операци.xlsx");
-        string chartName = "CustomStack - График выполнения операци";
+        string outputFilePath = Path.Combine(desktopPath, "ModifiedStack.xlsx");
+        string chartName = "ModifiedStack";
 
         List<Tuple<int, double>> results = new List<Tuple<int, double>>();
 
-        for (int size = 10; size <= 50000; size += 10)
+        for (int size = 10; size <= 30000; size += 10)
         {
             Console.WriteLine($"Размер стека: {size}");
 
             Generator.GenerateInputStackFile(size);
 
-            CustomStack<object> stack = new CustomStack<object>();
+            ModifiedStack<object> stack = new ModifiedStack<object>();
             TimeMeter timer = new TimeMeter();
 
             try
@@ -105,11 +97,11 @@ public class StackOperations
             results.Add(new Tuple<int, double>(size, elapsedTotal.TotalMilliseconds));
         }
 
-        ExcelWriter.WriteToExcel(results, outputFilePath, chartName);
+        ResultsCollectorToExcel.WriteToExcel(results, outputFilePath, chartName);
         TasksChoice.ReturnToMainMenu("Stack");
     }
 
-    private static void ProcessStackOperations(int size, CustomStack<object> stack, List<Tuple<int, double>> results)
+    private static void ProcessStackOperations(int size, ModifiedStack<object> stack, List<Tuple<int, double>> results)
     {
         string[] operations = File.ReadAllText("inputStack.txt").Split(' ');
 
@@ -120,7 +112,7 @@ public class StackOperations
         }
     }
 
-    private static void PerformStackOperation(int op, CustomStack<object> stack, ref int i, string[] operations)
+    private static void PerformStackOperation(int op, ModifiedStack<object> stack, ref int i, string[] operations)
     {
         switch (op)
         {
@@ -243,12 +235,12 @@ public class StackOperations
     public static void DoStandartStackOperation()
     {
         string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-        string outputFilePath = Path.Combine(desktopPath, "Stack - График выполнения операци.xlsx");
-        string chartName = "Stack - График выполнения операци";
+        string outputFilePath = Path.Combine(desktopPath, "StandartStack.xlsx");
+        string chartName = "StandartStack";
 
         List<Tuple<int, double>> results = new List<Tuple<int, double>>();
 
-        for (int size = 10; size <= 50000; size += 10)
+        for (int size = 10; size <= 30000; size += 10)
         {
             Console.WriteLine($"Размер стека: {size}");
 
@@ -273,7 +265,7 @@ public class StackOperations
             results.Add(new Tuple<int, double>(size, elapsedTotal.TotalMilliseconds));
         }
 
-        ExcelWriter.WriteToExcel(results, outputFilePath, chartName);
+        ResultsCollectorToExcel.WriteToExcel(results, outputFilePath, chartName);
         TasksChoice.ReturnToMainMenu("Stack");
     }
 

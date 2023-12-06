@@ -12,14 +12,12 @@ public class Node<T>
     }
 }
 
-public class CustomStack<T>
+public class ModifiedStack<T>
 {
-
     private Node<T> top;
-
     private LinkedList<T> items;
 
-    public CustomStack()
+    public ModifiedStack()
     {
         top = null;
         items = new LinkedList<T>();
@@ -45,25 +43,14 @@ public class CustomStack<T>
         return data;
     }
 
+    public T Top() => IsEmpty() ? default : top.Data;
 
-    public T Top()
-    {
-        if (IsEmpty())
-        {
-            return default;
-        }
-
-        return top.Data;
-    }
-
-    public bool IsEmpty()
-    {
-        return top == null;
-    }
+    public bool IsEmpty() => top == null;
 
     public void Print(bool printToConsole = true)
     {
         Node<T> current = top;
+
         if (IsEmpty())
         {
             if (printToConsole)
@@ -72,10 +59,12 @@ public class CustomStack<T>
             }
             return;
         }
+
         if (printToConsole)
         {
             Console.Write("Print: ");
         }
+
         while (current != null)
         {
             if (printToConsole)
@@ -84,6 +73,7 @@ public class CustomStack<T>
             }
             current = current.Next;
         }
+
         if (printToConsole)
         {
             Console.WriteLine();

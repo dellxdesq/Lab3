@@ -1,16 +1,18 @@
 ﻿namespace Lab3;
-public class CustomQueue<T>
+public class ModifiedQueue<T>
 {
-    private LinkedList<T> list;
+    private LinkedList<T> elements;
 
-    public CustomQueue()
+    public ModifiedQueue()
     {
-        list = new LinkedList<T>();
+        elements = new LinkedList<T>();
     }
-    public void Enqueue(T element)
+
+    public void Enqueue(T item)
     {
-        list.AddLast(element);
+        elements.AddLast(item);
     }
+
     public T Dequeue()
     {
         if (IsEmpty())
@@ -18,22 +20,22 @@ public class CustomQueue<T>
             throw new InvalidOperationException("Очередь пуста");
         }
 
-        T value = list.First.Value;
-        list.RemoveFirst();
+        T value = elements.First.Value;
+        elements.RemoveFirst();
         return value;
     }
-    public bool IsEmpty()
-    {
-        return list.Count == 0;
-    }
+
+    public bool IsEmpty() => elements.Count == 0;
+
     public void Print()
     {
-        foreach (T item in list)
+        foreach (T item in elements)
         {
             Console.Write($"{item} ");
         }
         Console.WriteLine();
     }
+
     public T Peek()
     {
         if (IsEmpty())
@@ -41,12 +43,11 @@ public class CustomQueue<T>
             throw new InvalidOperationException("Очередь пуста");
         }
 
-        return list.First.Value;
+        return elements.First.Value;
     }
+
     public void Print(bool isExcel)
     {
-        foreach (T item in list)
-        {
-        }
+        
     }
 }

@@ -8,7 +8,7 @@ namespace Lab3
     {
         public static double PostfixCalculate(string expression)
         {
-            CustomStack<double> stack = new CustomStack<double>();
+            ModifiedStack<double> stack = new ModifiedStack<double>();
 
             string[] tokens = expression.Split(' ');
             double operand1 = 0;

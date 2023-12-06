@@ -11,7 +11,7 @@ using System.Xml;
 namespace Lab3
 {
 
-    public class ExcelWriter
+    public class ResultsCollectorToExcel
     {
         public static void WriteToExcel(List<Tuple<int, double>> results, string filePath, string chartName)
         {
@@ -32,7 +32,7 @@ namespace Lab3
                     worksheet.Cells[i + 2, 2].Value = results[i].Item2;
                 }
 
-                
+
 
                 package.Save();
                 try
@@ -49,7 +49,5 @@ namespace Lab3
                 Console.WriteLine();
             }
         }
-
-        
     }
 }

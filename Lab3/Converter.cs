@@ -11,7 +11,7 @@ namespace Lab3
     {
         public static string ConvertToPostfix(string infixExpression)
         {
-            CustomStack<string> operatorStack = new CustomStack<string>();
+            ModifiedStack<string> operatorStack = new ModifiedStack<string>();
             StringBuilder postfixExpression = new StringBuilder();
             string[] tokens = TokenizeInfixExpression(infixExpression);
             foreach (var token in tokens)
@@ -61,8 +61,6 @@ namespace Lab3
         }
         private static string[] TokenizeInfixExpression(string infixExpression)
         {
-            // Используем регулярное выражение для токенизации
-            // Здесь используется простой паттерн, подлежащий доработке в зависимости от требований
             string pattern = @"([\+\-\*/\^\(\)]|\b(?:sin|cos|ln|sqrt)\b|\d+)";
             return Regex.Matches(infixExpression, pattern)
                         .OfType<Match>()
